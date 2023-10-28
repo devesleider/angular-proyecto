@@ -109,7 +109,11 @@ const routes: Routes = [
       title: 'Register Page'
     }
   },
-  {path: '**', redirectTo: 'dashboard'}
+  {path: '**', redirectTo: 'dashboard'},
+  {
+    path:'user',
+    loadChildren:() =>import('./users/users.module').then(m=> m.UsersModule)
+  }
 ];
 
 @NgModule({
