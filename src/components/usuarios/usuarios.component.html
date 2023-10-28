@@ -1,0 +1,49 @@
+
+<c-col xs="12">
+  <c-card class="mb-4">
+    <c-card-header>
+      <strong>Usuarios</strong>
+    </c-card-header>
+    <c-card-body>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data; let i = index;">
+            <th scope="row">{{ item.idusuario }}</th>
+            <td>{{ item.nombre }}</td>
+            <td>{{ item.apellido }}</td>
+            <td>{{ item.correo }}</td>
+            <td>
+              <div [ngClass]="{'circulo-verde': item.estado, 'circulo-rojo': !item.estado}"></div>
+              {{ item.estado ? 'Activo' : 'Inactivo' }}
+            </td>
+            <td>
+              <div class="botones">
+                <div class="boton-editar">
+                  <button cButton color="light">Editar</button>
+                </div>
+                <div class="boton-switch">
+                  <label class="switch">
+                    <input type="checkbox" [(ngModel)]="item.estado" (change)="toggleEstado(item.idusuario)">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        
+      </table>
+      
+    </c-card-body>
+  </c-card>
+</c-col>
